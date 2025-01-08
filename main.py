@@ -1,6 +1,54 @@
 def hittable_targets(room):
-    # Your implementation here!
-    pass
+    hits = 0
+
+    for i, row in enumerate(room):
+        for j, item in enumerate(row):
+            if item == 'A':
+                start_loc = (i, j)
+    
+    # Set r and c to Auberon's location
+    r, c = start_loc
+    # Search to the right
+    while 0 <= r < len(room) and 0 <= c < len(room[0]):
+        if room[r][c] == 'T':
+            hits += 1
+            break
+        if room[r][c] == 'W':
+            break
+        c += 1
+
+    # Search to the left
+    r, c = start_loc
+    while 0 <= r < len(room) and 0 <= c < len(room[0]):
+        if room[r][c] == 'T':
+            hits += 1
+            break
+        if room[r][c] == 'W':
+            break
+        c -= 1
+
+    # Search up:
+    r, c = start_loc
+    while 0 <= r < len(room) and 0 <= c < len(room[0]):
+        if room[r][c] == 'T':
+            hits += 1
+            break
+        if room[r][c] == 'W':
+            break
+        r -= 1
+
+    # Search down:
+    r, c = start_loc
+    while 0 <= r < len(room) and 0 <= c < len(room[0]):
+        if room[r][c] == 'T':
+            hits += 1
+            break
+        if room[r][c] == 'W':
+            break
+        r += 1
+
+    return hits
+
 
 
 room1 = [
